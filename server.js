@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const DATABASE_URL = "mongodb://localhost:27017/wikiDB";
-const ArticleSchema = require("./models/articles.js");
+const articlesRouter = require("./router/articles.js");
 const app = express();
 
 mongoose.connect(DATABASE_URL, { useNewUrlParser: true });
@@ -21,11 +21,7 @@ app.use(
 
 app.use(express.static("public"));
 
-const Article = mongoose.model("Article", ArticleSchema);
-
-app.get("/v1/api/article", async (request, response) => {
-   // const article = Article.find(request.)
-});
+app.use("/api/v1/articles", articlesRouter);
 
 app.listen(PORT, () => {
   console.info(`Listening in port ${PORT}`);

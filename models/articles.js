@@ -1,6 +1,8 @@
 /* Schema to database */
-const articleSchema = {
+const mongoose = require("mongoose");
+
+const articleSchema = new mongoose.Schema({
   title: String,
   content: String,
-};
-module.exports = articleSchema;
+});
+module.exports = mongoose.model("Article", articleSchema);
