@@ -30,6 +30,14 @@ router.post("/create", async (req, res) => {
     res.status(400).json({ message: "cannot create an article." });
   }
 });
+router.delete('/delete/:id', getArticle, async (req, res) => {
+    try {
+        await res.article.remove();
+        res.json({ message: "deleted article" });
+      } catch (error) {
+        res.status(500).json({ message: "could not find article." });
+      }
+})
 
 async function getArticle(req, res, next) {
   let article;
@@ -43,5 +51,7 @@ async function getArticle(req, res, next) {
   res.article = article;
   next();
 }
+
+
 
 module.exports = router;
