@@ -16,6 +16,21 @@ router.get("/:id", getArticle, async (req, res) => {
   res.json(res.article);
 });
 
+router.post("/create", async (req, res) => {
+  /** need validation here */
+
+  try {
+    const articles = await new Article({
+      title: req.body.title,
+      content: req.body.content,
+    });
+    articles.save();
+    res.status(201).json({ message: " created article with success." });
+  } catch (error) {
+    res.status(400).json({ message: "cannot create an article." });
+  }
+});
+
 async function getArticle(req, res, next) {
   let article;
   try {
