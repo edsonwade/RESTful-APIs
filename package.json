@@ -1,0 +1,27 @@
+{
+  "name": "restfull_api",
+  "version": "1.0.0",
+  "description": "Restfull API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edsonwade/Restfull_API.git"
+  },
+  "keywords": [],
+  "author": "Vanilson Muhongo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edsonwade/Restfull_API/issues"
+  },
+  "homepage": "https://github.com/edsonwade/Restfull_API#readme",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.1",
+    "nodemon": "^2.0.16"
+  }
+}
