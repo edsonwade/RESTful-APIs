@@ -22,7 +22,7 @@ router.post("/create", async (req, res) => {
   try {
     const articles = await new Article({
       title: req.body.title,
-      content: req.body.content,
+      content: req.body.content
     });
     articles.save();
     res.status(201).json({ message: " created article with success." });
@@ -30,6 +30,24 @@ router.post("/create", async (req, res) => {
     res.status(400).json({ message: "cannot create an article." });
   }
 });
+
+//PATCH ROUTE -> Alow to update a specific field.....
+router.patch("/update/:id", getArticle, async (req, res) => {
+  if (req.body.title != null) {
+    res.article.title = req.body.title;
+  }
+  if (req.body.content != null) {
+    res.article.content = req.body.content;
+  }
+  try {
+    const updateArticle = await res.article.save();
+    res.json(updateArticle);
+  } catch (error) {
+    res.status(400).json({ message: " article not update" });
+  }
+});
+
+
 router.delete('/delete/:id', getArticle, async (req, res) => {
     try {
         await res.article.remove();
